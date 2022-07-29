@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Reservation of {{selectedCar.brand}} {{selectedCar.model}}</title>
+    </head>
+    <section class="showcase">
+        <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png">
+    </section>
+    <body>
+        <header>
+            <h1> Reservation of {{selectedCar.brand}} {{selectedCar.model}}</h1>
+        </header>
+            <main>
+                <section class="container">
+                    <div class="left-half">
+                        <img *ngIf="selectedCar.id%6==0" [src]="'assets/images/car1.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                        <img *ngIf="selectedCar.id%6==1" [src]="'assets/images/car2.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                        <img *ngIf="selectedCar.id%6==2" [src]="'assets/images/car3.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                        <img *ngIf="selectedCar.id%6==3" [src]="'assets/images/car4.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                        <img *ngIf="selectedCar.id%6==4" [src]="'assets/images/car5.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                        <img *ngIf="selectedCar.id%6==5" [src]="'assets/images/car6.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    </div>
+                    <div class="right-half">
+                        <div class="right-top">
+                            <div class="details">
+                                <h2>Car details</h2>
+                                <hr class="hr-class">  
+                                <h3>Engine Capacity: {{selectedCar.engineCapacity}}</h3>
+                                <h3>Body Type: {{selectedCar.bodyTypeEnum}}</h3>
+                                <h3>Type of Fuel: {{selectedCar.typeOfFuelEnum}}</h3>
+                                <h3>Production Year: {{selectedCar.productionYear}}</h3>
+                                <h3>Rent Cost Per Day: <span style="color:rgb(5, 177, 13)">{{selectedCar.pricePerDayRent}}€</span></h3>
+                                <hr class="hr-class"> 
+                            </div>
+                        </div>
+                        <div class="right-bottom">
+                            <div class="details">
+                                
+                                <h2>Reservation details</h2>
+                                <hr class="hr-class">  
+                                <h3>Reservation From {{selectedReservation.dateStart}} to {{selectedReservation.dateEnd}}</h3>
+                                <h3>Payment in Advance: <span style="color:rgb(5, 177, 13)">{{selectedReservation.paymentInAdvance}}€</span></h3>
+                                <h3>Rent Cost: <span style="color:rgb(5, 177, 13)">{{selectedReservation.cost}}€</span></h3>
+                                <hr class="hr-class"> 
+                                <p>
+                                    <button type="button" pButton label="  Go back" (click)="btnBack();"><i class="pi pi-arrow-circle-left"></i></button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <p-toast position="top-right"></p-toast>
+            </main>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Car List</title>
+    </head>
+    <section class="showcase">
+        <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png" alt="purple page's background">
+    </section>
+    <body>
+        <div class="container">
+            <h2>Search car by:</h2>
+            <div class="search-top">
+                <input type="text" pInputText [(ngModel)]="carFilterDto.brand" placeholder="Brand" [defaultValue]=null>
+                <input type="text" pInputText [(ngModel)]="carFilterDto.model" placeholder="Model" [defaultValue]=null>
+                <p-inputMask [(ngModel)]="carFilterDto.productionYear" mask="9999" [unmask]="true" placeholder="Production Year" styleClass="input-mask"></p-inputMask>
+                <p-inputMask [(ngModel)]="carFilterDto.engineCapacity" mask="9.9" placeholder="Engine Capacity" styleClass="input-mask"></p-inputMask>
+                <p-dropdown [options]="fuelTypes" [(ngModel)]="carFilterDto.typeOfFuel" placeholder="Fuel Type"  styleClass="input-mask" [showClear]="true" ></p-dropdown>
+                <p-dropdown (onClear)="clearBodyType()" [options]="bodyTypes" [(ngModel)]="carFilterDto.bodyType" placeholder="Body type"  styleClass="input-mask" [showClear]="true"></p-dropdown>                </div>
+            <h2>Search by period:</h2>
+            <div class="search">
+                <div class="date1">
+                    <label for="from">From</label>
+                    <p-calendar appendTo="body" inputId="from" [(ngModel)]="carFilterDto.freeFrom" dateFormat="yy-mm-dd">
+                        <ng-template pTemplate="footer"></ng-template>
+                    </p-calendar>
+                </div>
+                <div class="date2">
+                    <label for="to" id="toLabel">To</label>
+                    <p-calendar appendTo="body" inputId="to" [(ngModel)]="carFilterDto.freeTo" dateFormat="yy-mm-dd">
+                        <ng-template pTemplate="footer"></ng-template>
+                    </p-calendar>
+                </div>
+                <button class="search-button" type="button" pButton label="Search" (click)="btnRefreshCarList(carFilterDto);"><i class="pi pi-search"></i></button>
+            </div>
+        </div>
+        <p-table [value]="cars" [paginator]="true" [rows]="10">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Image</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Fuel Type</th>
+                    <th>Body Type</th>
+                    <th>Engine Capacity</th>
+                    <th>Production Year</th>
+                    <th>Rent Cost(/day)</th>
+                    <th>Status</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-car>
+                <tr>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link">
+                            <img *ngIf="car.id%6==0" [src]="'assets/images/car1.jpg'" [alt]="car.brand"/>
+                            <img *ngIf="car.id%6==1" [src]="'assets/images/car2.jpg'" [alt]="car.brand"/>
+                            <img *ngIf="car.id%6==2" [src]="'assets/images/car3.jpg'" [alt]="car.brand"/>
+                            <img *ngIf="car.id%6==3" [src]="'assets/images/car4.jpg'" [alt]="car.brand"/>
+                            <img *ngIf="car.id%6==4" [src]="'assets/images/car5.jpg'" [alt]="car.brand"/>
+                            <img *ngIf="car.id%6==5" [src]="'assets/images/car6.jpg'" [alt]="car.brand"/>
+                        </a>
+                    </td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.brand }}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.model }}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.typeOfFuelEnum }}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.bodyTypeEnum }}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.engineCapacity }}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.productionYear }}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.pricePerDayRent | currency: 'EUR'}}</a></td>
+                    <td><a [routerLink]="['/selected-car',car.id]" class="row-link" tabindex="-1"> {{ car.status }}</a></td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div>
+                    There are totally {{cars.length}} cars with your filter
+                </div>
+                <div class="table-footer">
+                    <p>
+                        <button type="button" pButton label="  Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
+                    </p>
+                </div>
+            </ng-template>
+        </p-table>
+    </body>
+</html>

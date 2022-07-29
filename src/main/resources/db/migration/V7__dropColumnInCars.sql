@@ -1,0 +1,1 @@
+--ALTER TABLE public.CARS DROP COLUMN status;

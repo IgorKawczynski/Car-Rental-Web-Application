@@ -1,0 +1,54 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Car Rental</title>
+    </head>
+    <body>
+        <header>
+            <section class="showcase">
+                <!-- <video src="../../assets/pexels-kelly-lacy-9737916.mp4" autoplay loop></video> -->
+                <img src ="../../assets/Car-Rentals-Friedman-Memorial-Airport-Sun-Valley-Idaho.jpeg" alt="cars in page's background">
+            </section>
+            <section class="showcasez">
+                <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png" alt="purple page's background">
+            </section>
+            <div class="containerz">
+                <h1>Car Rental – Search, Rent, and Save up to 70%!</h1>
+                <h2>✓ No Hidden Costs ✓ 24/7 Support ✓ Free Cancellation<br><br></h2>
+            </div>
+        </header>
+            <main>
+                <div class="container">
+                    <div class="childContainer">
+                        <p>
+                            <button type="button" class="p-button-rounded" pButton label="Rent a Car" (click)="btnRent();"><i class="pi pi-car"></i></button>
+                        </p>
+                        <p>
+                            <button type="button" class="p-button-rounded" *ngIf="!isLogged()" pButton label="Login" (click)="btnClick('/login');"><i class="pi pi-lock-open"></i></button>
+                        </p>
+                        <p>
+                            <button type="button" class="p-button-rounded" *ngIf="!isLogged()" pButton label="Register" (click)="btnClick('/register');"><i class="pi pi-user-plus"></i></button>
+                        </p>
+                        <p>
+                            <button type="button" class="p-button-rounded" *ngIf="isLogged()" pButton label="Your reservations" (click)="btnClick('/reservations')"><i class="pi pi-history"></i></button>
+                        </p>
+                        <p>
+                             <button type="button" class="p-button-rounded" *ngIf="isLogged()" pButton label="Logout" (click)="btnLogout()"><i class="pi pi-sign-out"></i></button>
+                        </p>
+                        <p>
+                            <button type="button" class="p-button-rounded" pButton label="Find Us" (click)="showBasicDialog()" icon="pi pi-map-marker"></button>
+                        </p>
+                        <p-toast position="top-right"></p-toast>
+                    </div>
+                </div>
+                <p-dialog header="Our Localizations" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000" styleClass="shake">
+                        <p-gmap #gmap center="53.7760265, 20.3221761" [style]="{'width':'100%','height':'520px', 'margin-bottom': '1em'}" [options]="options" [overlays]="overlays"></p-gmap>
+                </p-dialog>
+            </main>
+    </body>
+</html>
+
+

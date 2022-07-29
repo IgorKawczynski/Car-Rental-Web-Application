@@ -1,0 +1,76 @@
+h1 {
+    text-align: center;
+    margin-top: 1%;
+
+  }
+
+h2 {
+  font-size:large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  margin-top: 0%;
+}
+
+  .container {
+    box-shadow: 0 0 15px rgba(127, 52, 156, 0.6);
+    background-color: rgba(201, 152, 216, 0.1);
+    width: 500px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  button {
+    background-color:rgb(92, 0, 129);
+    margin-top: 3px;
+    margin-bottom: 6px;
+    height: 50px;
+    width: 300px;
+    font-size: large;
+  }
+
+  .btn2 {
+    background-color:rgb(92, 0, 128);
+    margin-top: 3px;
+    margin-bottom: 20px;
+    height: 30px;
+    width: 200px;
+    font-size: large;
+  }
+
+  ul {
+    line-height: 1.5
+  }
+
+  li {
+    text-align: left;
+  }
+
+  .container p {
+    text-align: center;
+  }
+
+  input {
+    width: 235px;
+  }
+
+  .input-top {
+    margin-top: 25px;
+  }
+
+  :host ::ng-deep .input-mask{
+    width: 235px;
+  }
+
+  .showcase img {
+    box-shadow: 0 0 15px rgb(157, 140, 201);
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    opacity: 0.55;
+    z-index: -1;
+  }
+
+

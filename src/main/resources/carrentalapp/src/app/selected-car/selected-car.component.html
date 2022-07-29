@@ -1,0 +1,79 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{selectedCar.brand}} {{selectedCar.model}}</title>
+    </head>
+    <section class="showcase">
+        <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png" alt="purple page's background">
+    </section>
+    <body>
+        <main>
+            <section class="container">
+                <div class="left-half">
+                    <img *ngIf="selectedCar.id%6==0" [src]="'assets/images/car1.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==1" [src]="'assets/images/car2.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==2" [src]="'assets/images/car3.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==3" [src]="'assets/images/car4.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==4" [src]="'assets/images/car5.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <img *ngIf="selectedCar.id%6==5" [src]="'assets/images/car6.jpg'" [alt]="selectedCar.brand + selectedCar.model"/>
+                    <p class="description">{{selectedCar.brand}} {{selectedCar.model}}</p>
+                </div>
+                <div class="right-half">
+                    <div class="right-top">
+                        <div class="details">
+                            <h3>Engine Capacity: {{selectedCar.engineCapacity}}</h3>
+                            <h3>Body Type: {{selectedCar.bodyTypeEnum}}</h3>
+                            <h3>Type of Fuel: {{selectedCar.typeOfFuelEnum}}</h3>
+                            <h3>Production Year: {{selectedCar.productionYear}}</h3>
+                            <h3>Rent Cost Per Day: {{selectedCar.pricePerDayRent}}€</h3>
+                            <h3>Status: {{selectedCar.status}}</h3>
+                        </div>
+                        <div class="reservations-list">
+                            <!-- DOBRZE BY BYLO ZMIENIC FUNKCJE getAllReservationsForCarId
+                                NA FUNKCJE: getAllReservationsForCarIdFromPresentDay (nie wyswietlac rezerwacji historycznych,
+                                        ale przy okazji wyswietlic te, ktora jeszcze trwa) -->
+                            <h2 class="reservations">Reservations:</h2>
+                            <div class="scroller">
+                                <p-scroller [items]="reservations" scrollHeight="100px" [itemSize]="50">
+                                    <ng-template pTemplate="item" let-item let-options="options">
+                                    <div class="scroll-item">
+                                        {{item.dateStart}} --- {{item.dateEnd}}
+                                    </div>
+                                    </ng-template>
+                                </p-scroller>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-bottom">
+                        <h3 class="reservations">Enter Reservation Period:</h3>
+                            <div class="date1">
+                                <label for="from">From </label>
+                                <p-calendar appendTo="body" inputId="from" [(ngModel)]="from" dateFormat="yy-mm-dd">
+                                </p-calendar>
+                            </div>
+                            <div class="date2">
+                                <label for="to" id="toLabel">To </label>
+                                <p-calendar appendTo="body" inputId="to" [(ngModel)]="to" dateFormat="yy-mm-dd">
+                                    <ng-template pTemplate="footer"></ng-template>
+                                </p-calendar>
+                            </div>
+                        
+                        <h3 class="reservations">Payment in Advance: <span style="color:green">{{selectedCar.paymentInAdvance}}€</span></h3>
+                        <h3 class="reservations">Rent Cost: <span style="color:green">{{priceRent}}€</span></h3>
+                        <p class="buttons">
+                            <button type="button" pButton label="Calculate Price" (click)="finalPrice();"><i class="pi pi-euro"></i></button>
+                            <button type="button" pButton label="Reserve" (click)="btnReserve();"><i class="pi pi-plus-circle"></i></button>
+                        </p>
+                        <p>
+                            <button type="button" pButton label="  Go back" (click)="btnBack();"><i class="pi pi-arrow-circle-left"></i></button>
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <p-toast position="top-right"></p-toast>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<section class="showcase">
+    <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png">
+</section>
+
+<p-table [columns]="columns" [value]="reservations" responsiveLayout="scroll">
+
+    <ng-template pTemplate="caption">
+        <div class="table-header">
+            History of your reservations
+            <p>
+                <button type="button" pButton label=" Main Page" (click)="btnClick('/');"><i class="pi pi-arrow-circle-left"></i></button>
+            </p>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData let-reservationDto>
+        <tr>
+                <td><a [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1"> {{
+                        reservationDto.brand }}</a></td>
+                <td><a [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1"> {{
+                        reservationDto.model }}</a></td>
+                <td><a [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1"> {{
+                        reservationDto.dateStart }}</a></td>
+                <td><a [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1"> {{
+                        reservationDto.dateEnd }}</a></td>
+                <td><a [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1"> {{
+                        reservationDto.cost | currency: 'EUR' }}</a></td>
+                <td><a [routerLink]="['/selected-reservation',reservationDto.id]" class="row-link" tabindex="-1"> {{
+                        reservationDto.paymentInAdvance | currency: 'EUR'}}</a></td>
+            <td>
+                <div class="btn">
+                    <!-- <button type="button" pButton label=" Cancel" (click)="btnDelete(rowData.id);"><i class="pi pi-ban"></i></button> -->
+                    <!-- {{rowData.id}} -->
+
+                    <button type="button" pButton label=" Cancel" (click)="showBasicDialogCancel(rowData.id);"><i class="pi pi-thumbs-up"></i></button>
+                    <p-dialog class="dialog1" header="Are you sure?" [(visible)]="displayBasicCancel" [style]="{width: '30vw'}" [baseZIndex]="10000" styleClass="shake">
+                        <button type="button" id="btnDate" pButton label=" No" (click)="btnReload();"><i class="pi pi-times"></i></button>
+                        <button type="button" id="btnDate" pButton label=" Yes" (click)="btnDelete();"><i class="pi pi-thumbs-up"></i></button>
+                    </p-dialog>
+
+                    <button type="button" pButton label=" Edit" (click)="showBasicDialogEdit(rowData.id);"><i class="pi pi-pencil"></i></button>
+                    <p-dialog class="dialog2" header="Change date of your reservation" [(visible)]="displayBasicEdit" [style]="{'width':'40%','height':'640px'}" [baseZIndex]="10000" styleClass="shake">
+                        <div class="date1">
+                            <label for="from">From</label>
+                            <p-calendar appendTo="body" inputId="from" [(ngModel)]="from" dateFormat="yy-mm-dd">
+                                <ng-template pTemplate="footer"></ng-template>
+                            </p-calendar>
+                        </div>
+                        <div class="date2">
+                            <label for="to" id="toLabel">To</label>
+                            <p-calendar appendTo="body" inputId="to" [(ngModel)]="to" dateFormat="yy-mm-dd">
+                                <ng-template pTemplate="footer"></ng-template>
+                            </p-calendar>
+                        </div>
+                        <button type="button" id="btnDate" pButton label=" Accept" (click)="btnEdit();"><i class="pi pi-thumbs-up"></i></button>
+                    </p-dialog>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+    <p-toast position="center"></p-toast>
+</p-table>
+

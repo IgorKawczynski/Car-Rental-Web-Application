@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <section class="navbar">
+        <p-menubar [model]="items">
+            <ng-template pTemplate="start">
+                <img src="../../assets/images/car-LOGO2.png" height="40" class="mr-2" alt="car logo">
+            </ng-template>
+            <ng-template pTemplate="end">
+                <p>
+                    <button pButton pRipple class="p-button-rounded p-button-help" type="button" *ngIf="isLogged()"
+                        icon="pi pi-user" routerLink="/edit" routerLinkActive="active"></button>
+                    <button pButton pRipple class="p-button-rounded p-button-help" type="button" *ngIf="isLogged()"
+                    icon="pi pi-sign-out" (click)="btnLogout()" routerLinkActive="active" pButton label="Logout"></button>
+                </p>
+            </ng-template>
+        </p-menubar>
+    </section>
+</html>

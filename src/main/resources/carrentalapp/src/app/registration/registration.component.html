@@ -1,0 +1,66 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registration</title>
+    </head>
+    <body>
+        <section class="showcase">
+            <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png" alt="purple page's background">
+        </section>
+        <header>
+            <h1>CREATE ACCOUNT</h1>
+        </header>
+            <main>
+                <div class="container">
+                    <p>
+                        <input type="text" pInputText [(ngModel)]="userRequestDto.firstName" placeholder="First name" style="margin-top: 25px;">
+                    </p>
+                    <p>
+                        <input type="text" pInputText [(ngModel)]="userRequestDto.secondName" placeholder="Second name">
+                    </p>
+                    <p>
+                        <input type="text" pInputText [(ngModel)]="userRequestDto.login" placeholder="Login">
+                    </p>
+                    <p>
+                        <p-password [toggleMask]="true" [(ngModel)]="userRequestDto.password" placeholder="Password">
+                            <ng-template pTemplate="footer">
+                                <h4>Password</h4>
+                            </ng-template>
+                            <ng-template pTemplate="footer">
+                                <p-divider></p-divider>
+                                <p class="mt-2">Suggestions</p>
+                                <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                                    <li>At least one lowercase</li>
+                                    <li>At least one uppercase</li>
+                                    <li>At least one numeric</li>
+                                    <li>At least one special character</li>
+                                    <li>Minimum 8 characters</li>
+                                </ul>
+                            </ng-template>
+                        </p-password>
+                    </p>
+                    <p>
+                        <input type="text" pInputText [(ngModel)]="userRequestDto.email" placeholder="Email address">
+                    </p>
+                    <p>
+                        <p-inputMask [(ngModel)]="userRequestDto.phoneNumber" mask="999 999 999" [unmask]="true" placeholder="Phone number" styleClass="input-mask"></p-inputMask>
+                    </p>
+                    <p>
+                        <p-inputMask [(ngModel)]="userRequestDto.pesel" mask="99999999999" [unmask]="true" placeholder="Pesel" styleClass="input-mask"></p-inputMask>
+                    </p>
+                    <p>
+                        <button type="button" class="p-button-rounded" pButton label="Sign up" (click)="btnRegister();"></button>
+                    </p>
+                    <h2 *ngIf="!isLogged()">  Already have an account ? </h2>
+                    <p>
+                        <!-- <label *ngIf="!isLogged()"> Already have an account ? </label> -->
+                        <button class="btn2" *ngIf="!isLogged()" type="button" pButton label="Sign in" (click)="btnClick('/login');"></button>
+                    </p>
+                </div>
+                <p-toast position="top-right"></p-toast>
+            </main>
+    </body>
+</html>

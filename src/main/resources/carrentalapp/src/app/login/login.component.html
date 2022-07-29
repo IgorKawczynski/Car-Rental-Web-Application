@@ -1,0 +1,35 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <section class="showcase">
+        <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png" alt="purple page's background">
+    </section>
+    <body>
+        <header>
+            <h1>LOGIN</h1>
+        </header>
+            <main>
+                <div class="container">
+                    <p>
+                        <input type="text" pInputText [(ngModel)]="model.email" placeholder="Email address">
+                    </p>
+                    <p>
+                        <p-password [feedback]="false" [toggleMask]="true" [(ngModel)]="model.password" placeholder="Password"></p-password>
+                    </p>
+                    <p>
+                        <button type="button" class="p-button-rounded" pButton label="Sign in" (click)="btnLogin();"></button>
+                    </p>
+                    <h2> Dont have account yet ? </h2>
+                    <p>
+                        <button class="btn2" type="button" pButton label="Sign up" (click)="btnClick('/register');"></button>
+                    </p>
+                </div>
+                <p-toast position="top-right"></p-toast>
+            </main>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit Account</title>
+    </head>
+    <body>
+        <section class="showcase">
+            <img src ="../../assets/images/watercolor-abstract-purple-background_23-2149120778.png" alt="purple page's background">
+        </section>
+            <main>
+                <div class="container">
+                    <div class="left-half">
+                        <div class="details">
+                            <div class="name-top">
+                                <p>First Name:</p>
+                            </div>
+                            <p>Last Name:</p>
+                            <p>Login:</p>
+                            <p>Email:</p>
+                            <p>Pesel:</p>
+                            <p>Phone: Number</p>
+                        </div>
+                    </div>
+                    <div class="right-half">
+                        <p>
+                            <input type="text" pInputText [(ngModel)]="user.firstName" placeholder="First name" style="margin-top: 25px;">
+                        </p>
+                        <p>
+                            <input type="text" pInputText [(ngModel)]="user.secondName" placeholder="Second name">
+                        </p>
+                        <p>
+                            <input type="text" pInputText [(ngModel)]="user.login" placeholder="Login">
+                        </p>
+                        <!-- <p>
+                            <input type="text" pInputText [(ngModel)]="user.password" placeholder="Password">
+                        </p> -->
+                        <!-- <p>
+                            <p-password [toggleMask]="true" [(ngModel)]="password1" placeholder="Password">
+                             PASSWORD1 DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY
+                                <ng-template pTemplate="header">
+                                    <h4>Password</h4>
+                                </ng-template>
+                                <ng-template pTemplate="footer">
+                                    <p-divider></p-divider>
+                                    <p class="mt-2">Suggestions</p>
+                                    <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                                        <li>At least one lowercase</li>
+                                        <li>At least one uppercase</li>
+                                        <li>At least one numeric</li>
+                                        <li>At least one special character</li>
+                                        <li>Minimum 8 characters</li>
+                                    </ul>
+                                </ng-template>
+                            </p-password>
+                        </p> -->
+                        <!-- <p>
+                            <p-password [feedback]="false" [toggleMask]="true" [(ngModel)]="password2" placeholder="Repeat password"></p-password>
+                            PASSWORD2 DODAN0 TYLKO NA POTRZEBY ZROBIENIA WIDOKU - DO ZMIANY
+                        </p> -->
+                        <p>
+                            <input type="text" pInputText [(ngModel)]="user.email" placeholder="Email address">
+                        </p>
+                        <p>
+                            <p-inputMask [(ngModel)]="user.pesel" mask="99999999999" [unmask]="true" placeholder="Pesel" styleClass="input-mask"></p-inputMask>
+                        </p>
+                        <p>
+                            <p-inputMask [(ngModel)]="user.phoneNumber" mask="999 999 999" [unmask]="true" placeholder="Phone number" styleClass="input-mask"></p-inputMask>
+                        </p>
+                        <p>
+                            <button type="button" pButton label="Confirm edit" (click)="btnUpdate()"></button>
+                        </p>
+                    </div>
+                </div>
+            </main>
+    </body>
+</html>
