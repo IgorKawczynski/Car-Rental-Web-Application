@@ -1,4 +1,4 @@
-# ZetoSoftware-Praktyki2022
+# Car Rental WEB APP
 Simple application for car rental :car: :car: :car: :car: :car:
 
-Instruction in progres...
+Instruction in progress...
